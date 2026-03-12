@@ -55,12 +55,18 @@ jobs:
       #fails here = one or more tests failed
       - name: Run all Tests
         run: mvn clean test --no-transfer-progress
+      - name: Enforce Coverage Threshold(min 70%)
+        run: mvn jacoco:check --no-transfer-progress
+        #This reads the jacoco XML report generated in previous step
+        #Fails the build if overall linecoverage is below 70%
+        #When this fails, you will see
+        #[ERROR] RUle violated: lines overed ration
 
       #step 6:upload all the test reports - even if tests failed
       #if: always()=run this step regardless of previous step result
       #without this, you'd have no reports to debug failure
       - name: Upload Test reports
-        uses: actions/upload-artifacts@v4
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-reports-${{ github.run_number }}
