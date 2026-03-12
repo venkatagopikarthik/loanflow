@@ -55,3 +55,27 @@ jobs:
       #fails here = one or more tests failed
       - name: Run all Tests
         run: mvn clean test --no-transfer-progress
+
+      #step 6:upload all the test reports - even if tests failed
+      #if: always()=run this step regardless of previous step result
+      #without this, you'd have no reports to debug failure
+      - name: Upload Test reports
+        uses: actions/upload-artifacts@v4
+        if: always()
+        with:
+          name: test-reports-${{ github.run_number }}
+          path: |
+            target/surefire-report/
+            target/site/jacoco/
+          retention-days: 14
+      #step 7 : build the JAR( -DskiptTests= dont run tests again)
+      - name: Build Executable Jar
+        run: mvn package -DskiptTests --no-transfer-progress
+      #step 8: save the JAR as an artifact (downloadable from github UI)
+      - name: Upload JAR Artifact
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: loanflow-jar-${{ github.run_number }}
+          path: target/loanflow-*.jar
+          retention-days: 30

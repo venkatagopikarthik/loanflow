@@ -2,7 +2,6 @@ package com.revature.loanflow.services;
 
 import com.revature.loanflow.model.LoanApplication;
 import com.revature.loanflow.model.LoanStatus;
-import com.revature.loanflow.services.LoanService;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -92,4 +91,3 @@ class LoanServiceTest {
         assertTrue(reason.contains("580"));
     }
 }
- 

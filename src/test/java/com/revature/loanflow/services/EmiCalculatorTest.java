@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmiCalculatorTest {
 
     @Test
-    @DisplayName("Standard loan: Rs.1L at 12.5% for 36 months = Rs.3338.74")
+    @DisplayName("Standard loan: Rs.1L at 12.5% for 36 months = Rs.3345.36")
     void testStandardLoan() {
         double emi = EmiCalculator.calculateEmi(100_000, 12.5, 36);
-        assertEquals(3338.74, emi, 0.01);
+        assertEquals(3345.36, emi, 0.01);
         //             ^expected  ^actual  ^delta (tolerance)
     }
 
