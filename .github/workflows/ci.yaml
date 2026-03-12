@@ -36,7 +36,7 @@ jobs:
           fetch-depth: 0 #full git history -needed for sonarqube later
       #step2 :Install java 21
       - name : Set up Java 21
-        uses : actions/setip-java@v4
+        uses : actions/setup-java@v4
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: ${{ env.JAVA_DISTRIBUTION }}
