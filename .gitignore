@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+#Os files
+.DS_Store
+Thumbs.db
+
+# Secrets -never commit
+.env
+application-local.properties

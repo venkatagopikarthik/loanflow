@@ -19,7 +19,7 @@ env:
   JAVA_VERSION: '21'
   JAVA_DISTRIBUTION: 'temurin'
   #faster JVM startup on CI machines(limited RAM)
-  MAVEN_OPTS: '-Xmx512 -XX:+TieredCompilation -XX:TieredStopAtLevel=1'
+  MAVEN_OPTS: '-Xmx512m -XX:+TieredCompilation -XX:TieredStopAtLevel=1'
 
 #JOBS
 jobs:
