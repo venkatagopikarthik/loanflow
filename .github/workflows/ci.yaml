@@ -51,3 +51,7 @@ jobs:
       - name: Compile
         run: mvn clean compile --no-transfer-progress
       #Step 5: Run all @Test methods
+      #JaCoCo agent automatically tracks coverage during this step
+      #fails here = one or more tests failed
+      - name: Run all Tests
+        run: mvn clean test --no-transfer-progress
